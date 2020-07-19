@@ -5,41 +5,49 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "task")
+@Table(name = "task", catalog = "locust_track")
 public class Task {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "taskid", nullable = false)
-	private Long taskId;
+	private Long taskid;
+	
 	@Column(name = "taskdescription")
-	private String taskDestription;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "ticketid", nullable = false)
-	private Ticket ticket;
-	public Long getTaskId() {
-		return taskId;
+	private String taskdescription;
+	
+	@Column(name = "ticketid")
+	private Long ticketid;
+
+	public Long getTaskid() {
+		return taskid;
 	}
-	public void setTaskId(Long taskId) {
-		this.taskId = taskId;
+
+	public void setTaskid(Long taskid) {
+		this.taskid = taskid;
 	}
-	public String getTaskDestription() {
-		return taskDestription;
+
+	public String getTaskdescription() {
+		return taskdescription;
 	}
-	public void setTaskDestription(String taskDestription) {
-		this.taskDestription = taskDestription;
+
+	public void setTaskdescription(String taskdescription) {
+		this.taskdescription = taskdescription;
 	}
-	public Ticket getTicket() {
-		return ticket;
+
+	public Long getTicketid() {
+		return ticketid;
 	}
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+
+	public void setTicketid(Long ticketid) {
+		this.ticketid = ticketid;
 	}
 	
 }

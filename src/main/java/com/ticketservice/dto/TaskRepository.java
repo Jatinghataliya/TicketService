@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ticketservice.modal.Task;
 
-@Repository
 public interface TaskRepository extends JpaRepository<Task, Long>{
 
 }

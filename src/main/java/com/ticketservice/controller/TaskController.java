@@ -21,7 +21,6 @@ import com.ticketservice.modal.Ticket;
 public class TaskController {
 
 	@Autowired
-	@Qualifier("ticketRepo")
 	private TicketRepository ticketRepository;
 	
 	@GetMapping("/test")
@@ -38,7 +37,7 @@ public class TaskController {
 	public List<Task> get(@PathVariable("ticketid") long ticketid) {
 		Ticket ticket;
 		try {
-			ticket = ticketRepository.getTicketByTicketId(ticketid);
+			ticket = ticketRepository.getTicketByTicketid(ticketid);
 			return ticket.getTasks();
 		} catch (Exception e) {
 			throw new NoDataFoundException("Task not available with " + ticketid);
